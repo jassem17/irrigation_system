@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api" />
+        <module name="irrigation_system" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api" options="-endorseddirs F:\api\target/endorsed" />
+      <module name="irrigation_system" options="-endorseddirs F:\project\irrigation_system\target/endorsed" />
     </option>
   </component>
 </project>
