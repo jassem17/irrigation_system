@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-list lines="none">
+   
+    <ion-item color="primary">
+      <ion-icon [name]="selectedTab == 'wishlist' ? 'water' : 'chevron-back-outline'" (click)="tab()"></ion-icon>
+      <ion-label>System State </ion-label>
+      <ion-avatar slot="end">
+        <img src="../../assets/logo.png" />
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img alt="Silhouette of mountains" src="https://inixindojogja.co.id/wp-content/uploads/2018/10/precision-ag.jpg" />
+    <ion-card-header>
+      <ion-card-title>System state </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+      <ion-button expand ="block"> System State </ion-button>
+      
+      
+    </ion-card-content>
+  </ion-card>
+</ion-content>
