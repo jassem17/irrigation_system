@@ -15,25 +15,57 @@ import java.util.Objects;
 public class Sensor extends Thing implements Serializable {
 
     @Id
-    private Long idSensor;
+    private String idSensor;
 
     @Column
+    private String idParcel;
+    @Column
     private SensorType sensorType;
+
+    @Column
+    private double sensorValue;
 
     public Sensor(){
 
     }
-    public Sensor(Long idSensor, SensorType sensorType){
-        this.idSensor=idSensor;
-        this.sensorType=sensorType;
+
+    public String getIdParcel() {
+        return idParcel;
     }
 
-    public Long getIdSensor() {
+    public void setIdParcel(String idParcel) {
+        this.idParcel = idParcel;
+    }
+
+    public Sensor(String idSensor, SensorType sensorType, String idParcel,double sensorValue){
+        this.idSensor=idSensor;
+        this.sensorType=sensorType;
+        this.idParcel = idParcel;
+        this.sensorValue=sensorValue;
+    }
+
+    public double getSensorValue() {
+        return sensorValue;
+    }
+
+    public void setSensorValue(double sensorValue) {
+        this.sensorValue = sensorValue;
+    }
+
+    public String getIdSensor() {
         return idSensor;
     }
 
     public SensorType getSensorType() {
         return sensorType;
+    }
+
+    public void setIdSensor(String idSensor) {
+        this.idSensor = idSensor;
+    }
+
+    public void setSensorType(SensorType sensorType) {
+        this.sensorType = sensorType;
     }
 
     @Override
@@ -52,6 +84,7 @@ public class Sensor extends Thing implements Serializable {
     @Override
     public String toString() {
         return "Sensor{" +
+                "idParcel=" + idParcel +
                 "idSensor=" + idSensor +
                 ", sensorType=" + sensorType +
                 '}';

@@ -21,41 +21,50 @@ public class Field implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idField;
+    private String idField;
     @Column
-    private List<Float> location;
-    @Column
-    protected Parcel[] parcels;
+    private String name;
+    /*@Column
+    protected Parcel[] parcels;*/
 
     public Field(){
     }
 
-    public Field(Long idField, List<Float> location,Parcel[] parcels) {
+    public Field(String idField, String name) {
         this.idField=idField;
-        this.location=location;
-        this.parcels=parcels;
+        this.name=name;
     }
 
-    public List<Float> getLocation() {
-        return location;
+    public String getIdField() {
+        return idField;
     }
 
-    public Parcel[] getParcels() {
-        return parcels;
+    public String getName() {
+        return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setIdField(String idField) {
+        this.idField = idField;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Field field = (Field) o;
-        return idField.equals(field.idField) && location.equals(field.location) && Arrays.equals(parcels, field.parcels);
+        return idField.equals(field.idField) && name.equals(field.name) ;
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(idField, location);
-        result = 31 * result + Arrays.hashCode(parcels);
+        int result = Objects.hash(idField, name);
+        result = 31 * result; //+ Arrays.hashCode(parcels);
         return result;
     }
 
@@ -63,8 +72,8 @@ public class Field implements Serializable {
     public String toString() {
         return "Field{" +
                 "idField=" + idField +
-                ", location=" + location +
-                ", parcels=" + Arrays.toString(parcels) +
+                ", name=" + name +
+                //", parcels=" + Arrays.toString(parcels) +
                 '}';
     }
 }

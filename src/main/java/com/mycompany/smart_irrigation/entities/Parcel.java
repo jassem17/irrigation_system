@@ -18,27 +18,33 @@ import java.util.UUID;
 public class Parcel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idParcel;
+    private String idParcel;
 
-    private List<Float> location;
+    @Column("field")
+    private String idField;
+
+   /* private List<Float> location;
     @Column
     private String plants;
-    @Column
-    private float moistureLevel;
-    @Column
-    private float temperature;
+*/
 
     public Parcel() {
     }
 
-    public Parcel(Long idParcel, List<Float> location,String plants, float moistureLevel , float temperature) {
-        this.idParcel=idParcel;
-        this.location=location;
-        this.plants=plants;
-        this.moistureLevel=moistureLevel;
-        this.temperature=temperature;
+    public String getIdField() {
+        return idField;
     }
 
+    public void setIdField(String idField) {
+        this.idField = idField;
+    }
+
+    public Parcel(String idParcel) {
+        this.idParcel=idParcel;
+
+
+    }
+/*
     public List<Float> getLocation() {
         return location;
     }
@@ -46,36 +52,42 @@ public class Parcel implements Serializable {
     public String getPlants() {
         return plants;
     }
-
-    public float getMoistureLevel() {
-        return moistureLevel;
+*/
+    public String getIdParcel() {
+        return idParcel;
     }
 
-    public float getTemperature() {
-        return temperature;
+    public void setIdParcel(String idParcel) {
+        this.idParcel = idParcel;
+    }
+/*
+    public void setLocation(List<Float> location) {
+        this.location = location;
     }
 
+    public void setPlants(String plants) {
+        this.plants = plants;
+    }
+*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Parcel parcel = (Parcel) o;
-        return Float.compare(parcel.moistureLevel, moistureLevel) == 0 && Float.compare(parcel.temperature, temperature) == 0 && idParcel.equals(parcel.idParcel) && location.equals(parcel.location) && plants.equals(parcel.plants);
+        return  idParcel.equals(parcel.idParcel) ;//&& location.equals(parcel.location) && plants.equals(parcel.plants);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idParcel, location, plants, moistureLevel, temperature);
+        return Objects.hash(idParcel);// location, plants);
     }
 
     @Override
     public String toString() {
         return "Parcel{" +
                 "idParcel=" + idParcel +
-                ", location=" + location +
-                ", plants='" + plants + '\'' +
-                ", moistureLevel=" + moistureLevel +
-                ", temperature=" + temperature +
+               // ", location=" + location +
+                //", plants='" + plants + '\'' +
                 '}';
     }
 }

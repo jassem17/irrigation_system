@@ -1,2 +1,4 @@
-package com.mycompany.smart_irrigation.mqtt;public class Subscribe {
+package com.mycompany.smart_irrigation.mqtt;
+
+public class Subscribe {
 }
