@@ -46,23 +46,21 @@ public class MqttConnection {
 
             //CLIENT CONNECTION OPTIONS
             MqttClient client = new MqttClient(
-                    "wss://mqtt.smart-irrigation.me:8083", // serverURI in format: "protocol://name:port"
-                    MqttClient.generateClientId(), // ClientId
-                    new MemoryPersistence()); // Persistence
+                    "wss://mqtt.smart-irrigation.me:8083",
+                    MqttClient.generateClientId(),
+                    new MemoryPersistence());
 
             MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
             mqttConnectOptions.setUserName("jassem");
             mqttConnectOptions.setPassword("jassem".toCharArray());
             mqttConnectOptions.setSocketFactory(SSLSocketFactory.getDefault());
-            // using the default socket factory
-            //mqttConnectOptions.setConnectionTimeout(1000);
+
             client.connect(mqttConnectOptions);
 
 
             client.setCallback(new MqttCallback() {
 
                 @Override
-                // Called when the client lost the connection to the broker
                 public void connectionLost(Throwable cause) {
                     System.out.println("client lost connection " + cause);
                 }
@@ -74,12 +72,12 @@ public class MqttConnection {
                     if (topic.equals("field")) {
                         try {
                             //System.out.println(topic + "::::: " + new String(message.getPayload()));
-                            /*System.out.println("field :"+ message+" is successfully added");
+                            System.out.println("field :"+ message+" is successfully added");
                             JSONObject obj = new JSONObject(new String(message.getPayload()));
                             Field field =new Field() ;
                             field.setIdField(obj.getString("idField"));
                             field.setName(obj.getString("name"));
-                            fieldRepository.save(field);*/
+                            fieldRepository.save(field);
                             System.out.println("hiiiiiiiii");
                         }
                         catch (Exception e ) {
@@ -128,7 +126,6 @@ public class MqttConnection {
             client.subscribe("field", 1);
             client.subscribe("Field/Parcel", 1);
             client.subscribe("Field/Parcel/Sensor", 1);
-            // client.subscribe("verification", 1);
         } catch (MqttException e) {
 
         }
