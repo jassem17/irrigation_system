@@ -1,0 +1,31 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="title">
+    <h4>Login</h4>
+    <p>Lets get started</p>
+  </div>
+  
+  <fieldset  class="input-item">
+    <legend>Email Id</legend> 
+    <ion-input type="email" placeholder="name@domain.com"></ion-input>
+  </fieldset>
+  <fieldset  class="input-item">
+    <legend>Password</legend> 
+    <ion-input type="password" placeholder="********"></ion-input>
+  </fieldset>
+  
+  <div class="ion-margin-top ion-text-right forget">
+    <a (click)="forget()">Forgot Password?</a>
+  </div>
+
+  <div class="ion-margin-top">
+    <ion-button expand="block" (click)="home()">LOGIN</ion-button>
+  </div>
+
+  <div class="ion-margin-top ion-text-center">
+    <a (click)="dismiss()">Close</a>
+  </div>
+</ion-content>
