@@ -8,6 +8,7 @@ import com.mycompany.smart_irrigation.entities.SensorType;
 import com.mycompany.smart_irrigation.repositories.FieldRepository;
 import com.mycompany.smart_irrigation.repositories.ParcelRepository;
 import com.mycompany.smart_irrigation.repositories.SensorRepository;
+import com.mycompany.smart_irrigation.resources.WebsocketResource;
 import jakarta.inject.Inject;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
@@ -42,7 +43,7 @@ public class MqttConnection {
     @PostConstruct
     public void start() {
         try {
-            System.out.println("starting mqtt");
+            System.out.println("MQTT started");
 
             //CLIENT CONNECTION OPTIONS
             MqttClient client = new MqttClient(
@@ -108,7 +109,9 @@ public class MqttConnection {
                             sensor.setIdSensor(obj.getString("idSensor"));
                             sensor.setSensorType(SensorType.valueOf(obj.getString("sensorType")));
                             sensor.setSensorValue(obj.getDouble("value"));
-                            sensorRepository.save(sensor);
+                            WebsocketResource.broadcastMessage(sensor);
+                            //sensorRepository.save(sensor);
+
                         }
                         catch (Exception e ) {
                         }

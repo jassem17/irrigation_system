@@ -1,8 +1,10 @@
 package com.mycompany.smart_irrigation.resources;
 
 import com.mycompany.smart_irrigation.entities.Field;
+import com.mycompany.smart_irrigation.entities.Parcel;
 import com.mycompany.smart_irrigation.entities.User;
 import com.mycompany.smart_irrigation.repositories.FieldRepository;
+import com.mycompany.smart_irrigation.repositories.ParcelRepository;
 import com.mycompany.smart_irrigation.repositories.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -26,6 +28,9 @@ public class FieldResource {
     @Inject
     private FieldRepository repository;
 
+    @Inject
+    private ParcelRepository parcelRepository;
+
     @GET
     public List<Field> findAll() {
         return repository.findAll()
@@ -36,6 +41,12 @@ public class FieldResource {
     @Path("/{id}")
     public Field findById(@PathParam("id") String id) {
         return repository.findById(id).orElseThrow(NOT_FOUND);
+    }
+
+    @GET
+    @Path("/parcels/{id}")
+    public List<Parcel> findByIdField(@PathParam("id") String id) {
+        return parcelRepository.findByIdField(id);
     }
 
     @POST

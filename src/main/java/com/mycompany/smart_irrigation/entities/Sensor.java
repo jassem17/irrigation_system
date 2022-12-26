@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 @JsonbVisibility(FieldPropertyVisibilityStrategy.class)
-public class Sensor extends Thing implements Serializable {
+public class Sensor implements Serializable {
 
     @Id
     private String idSensor;
@@ -56,8 +56,8 @@ public class Sensor extends Thing implements Serializable {
         return idSensor;
     }
 
-    public SensorType getSensorType() {
-        return sensorType;
+    public String getSensorType() {
+        return String.valueOf(sensorType);
     }
 
     public void setIdSensor(String idSensor) {

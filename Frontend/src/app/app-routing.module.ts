@@ -31,6 +31,12 @@ const routes: Routes = [
     path: 'reset',
     loadChildren: () => import('./reset/reset.module').then( m => m.ResetPageModule)
   },
+  {
+    path: 'fields',
+    loadChildren: () => import('./pages/tabs/fields/fields.module').then( m => m.FieldsPageModule)
+  },
+  
+
 
 ];
 

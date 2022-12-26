@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TabsPageRoutingModule } from './tabs-routing.module';
+import { FieldsPageRoutingModule } from './fields-routing.module';
 
-import { TabsPage } from './tabs.page';
+import { FieldsPage } from './fields.page';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     IonicModule,
-    TabsPageRoutingModule,
+    FieldsPageRoutingModule,
     HttpClientModule
   ],
-  declarations: [TabsPage]
+  declarations: [FieldsPage]
 })
-export class TabsPageModule {}
+export class FieldsPageModule {}

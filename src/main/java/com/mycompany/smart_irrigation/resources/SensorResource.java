@@ -1,12 +1,8 @@
 package com.mycompany.smart_irrigation.resources;
 
-
 import com.mycompany.smart_irrigation.entities.Parcel;
 import com.mycompany.smart_irrigation.entities.Sensor;
-import com.mycompany.smart_irrigation.entities.User;
-import com.mycompany.smart_irrigation.repositories.ParcelRepository;
 import com.mycompany.smart_irrigation.repositories.SensorRepository;
-import com.mycompany.smart_irrigation.repositories.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -19,50 +15,39 @@ import java.util.function.Supplier;
 import static java.util.stream.Collectors.toList;
 
 @ApplicationScoped
-@Path("parcel")
+@Path("sensor")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ParcelResource {
+public class SensorResource {
+
     private static final Supplier<WebApplicationException> NOT_FOUND =
             () -> new WebApplicationException(Response.Status.NOT_FOUND);
 
     @Inject
-    private ParcelRepository repository;
-
-    @Inject
-    private SensorRepository sensorRepository;
-
+    private SensorRepository repository;
     @GET
-    public List<Parcel> findAll() {
+    public List<Sensor> findAll() {
         return repository.findAll()
                 .collect(toList());
     }
     @GET
     @Path("/{id}")
-    public Parcel findById(@PathParam("id") String id) {
+    public Sensor findById(@PathParam("id") String id) {
         return repository.findById(id).orElseThrow(NOT_FOUND);
     }
 
-    @GET
-    @Path("/sensor/{id}")
-    public List<Sensor> findByIdParcel(@PathParam("id") String id) {
-        return sensorRepository.findByIdParcel(id);
-    }
 
-    @POST
-    public void save(Parcel parcel) {
-        repository.save(parcel);
-    }
 
     @PUT
     @Path("/{id}")
-    public void update(@PathParam("id") String id, Parcel parcel) {
-        repository.save(parcel);
+    public void update(@PathParam("id") String id, Sensor sensor) {
+        repository.save(sensor);
     }
 
     @Path("/{id}")
     @DELETE
-    public void delete(@PathParam("id") String plants) {
-        repository.deleteById(plants);
+    public void delete(@PathParam("id") String id) {
+        repository.deleteById(id);
     }
 }
+

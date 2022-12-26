@@ -1,0 +1,14 @@
+<ion-grid>
+  <ion-row>
+      <ion-card
+      *ngFor="let field of fields;" 
+    (click)="getParcelById(field.idField)">
+        <ion-card-header >
+          <ion-item lines="none">
+            <p>{{ field.name }}</p>
+            <span>{{ field.idField }}</span>
+          </ion-item>
+        </ion-card-header>
+      </ion-card>
+  </ion-row>
+</ion-grid>

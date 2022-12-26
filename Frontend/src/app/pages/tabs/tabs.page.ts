@@ -4,6 +4,7 @@ import { HomePage } from './home/home.page';
 import { HumidityPage } from './humidity/humidity.page';
 import { WelcomePage } from 'src/app/welcome/welcome.page';
 import { TempPage } from './temp/temp.page';
+import { FieldsPage } from './fields/fields.page';
 
 @Component({
   selector: 'app-tabs',
@@ -54,6 +55,16 @@ export class TabsPage implements OnInit {
   async welc () {
     const modal = await this.modalCtrl.create({
       component: WelcomePage,
+      animated: true,
+      mode: 'ios',
+      backdropDismiss: false,
+      cssClass: 'forget-modal',
+    })
+    return await modal.present();
+  }
+  async fields () {
+    const modal = await this.modalCtrl.create({
+      component: FieldsPage,
       animated: true,
       mode: 'ios',
       backdropDismiss: false,

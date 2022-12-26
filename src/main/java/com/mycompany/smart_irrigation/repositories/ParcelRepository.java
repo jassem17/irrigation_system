@@ -14,8 +14,7 @@ public interface ParcelRepository extends Repository<Parcel, String> {
 
     Page<Parcel> findAll(Pagination pagination);
 
-    Stream<Parcel> findByIdParcel(Long idParcel);
 
-    Stream<Parcel> findByLocation(List<Float> location);
+    List<Parcel> findByIdField(String idField);
 
 }

@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TabsPageRoutingModule } from './tabs-routing.module';
+import { ParcelPageRoutingModule } from './parcel-routing.module';
 
-import { TabsPage } from './tabs.page';
+import { ParcelPage } from './parcel.page';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     IonicModule,
-    TabsPageRoutingModule,
+    ParcelPageRoutingModule,
     HttpClientModule
   ],
-  declarations: [TabsPage]
+  declarations: [ParcelPage]
 })
-export class TabsPageModule {}
+export class ParcelPageModule {}

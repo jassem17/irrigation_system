@@ -26,7 +26,15 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
-  },  
+  },   {
+    path: 'fields',
+    loadChildren: () => import('./fields/fields.module').then( m => m.FieldsPageModule)
+  },
+  {
+    path: 'parcel',
+    loadChildren: () => import('./parcel/parcel.module').then( m => m.ParcelPageModule)
+  },
+ 
 ];
 
 @NgModule({
