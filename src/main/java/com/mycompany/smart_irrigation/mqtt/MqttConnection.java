@@ -108,7 +108,7 @@ public class MqttConnection {
                             sensor.setIdParcel(obj.getString("idParcel"));
                             sensor.setIdSensor(obj.getString("idSensor"));
                             sensor.setSensorType(SensorType.valueOf(obj.getString("sensorType")));
-                            sensor.setSensorValue(obj.getDouble("value"));
+                            sensor.setSensorValue(obj.getInt("sensorValue"));
                             WebsocketResource.broadcastMessage(sensor);
                             //sensorRepository.save(sensor);
 

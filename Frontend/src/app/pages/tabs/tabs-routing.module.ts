@@ -24,16 +24,24 @@ const routes: Routes = [
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
-      }
+      },
+      
     ]
-  },   {
+  }, 
+  {
     path: 'fields',
     loadChildren: () => import('./fields/fields.module').then( m => m.FieldsPageModule)
   },
   {
-    path: 'parcel',
+    path: 'parcel/:id',
     loadChildren: () => import('./parcel/parcel.module').then( m => m.ParcelPageModule)
+  },  {
+    path: 'water-level',
+    loadChildren: () => import('./water-level/water-level.module').then( m => m.WaterLevelPageModule)
   },
+
+  
+  
  
 ];
 

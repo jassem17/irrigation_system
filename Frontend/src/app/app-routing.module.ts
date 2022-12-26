@@ -3,6 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [  
   {
+    path: 'tabs/parcel/:id',
+    loadChildren: () => import('./pages/tabs/parcel/parcel.module').then( m => m.ParcelPageModule)
+  },
+  {
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   },
@@ -35,6 +39,7 @@ const routes: Routes = [
     path: 'fields',
     loadChildren: () => import('./pages/tabs/fields/fields.module').then( m => m.FieldsPageModule)
   },
+  
   
 
 

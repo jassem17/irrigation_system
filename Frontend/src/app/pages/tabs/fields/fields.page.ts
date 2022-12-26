@@ -34,10 +34,14 @@ export class FieldsPage implements OnInit {
     );
   }
   getParcelById(id:string){
+    let url = "tabs/parcel/"+ id
+    console.log(url)
+    this.router.navigateByUrl(url);
     return this.http.get(`${this.urlParcel}/${id}`).subscribe(
      data=>{
       console.log(data);
-      this.router.navigate(['/','tabs','parcel']);
+      
+      
      },err=>{
       console.log(err);
      });

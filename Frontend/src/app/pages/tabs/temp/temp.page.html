@@ -2,10 +2,10 @@
   <ion-list lines="none">
    
     <ion-item color="primary">
-      <ion-icon name='chevron-back-outline' (click)="tab()"></ion-icon>
+      <ion-icon [name]="selectedTab == 'wishlist' ? 'water' : 'chevron-back-outline'" (click)="tab()"></ion-icon>
       <ion-label>Temperature </ion-label>
       <ion-avatar slot="end">
-        <img src="assets/logo.png" />
+        <img src="../../assets/logo.png" />
       </ion-avatar>
     </ion-item>
   </ion-list>
@@ -13,14 +13,17 @@
 
 <ion-content>
   <ion-card>
+    <img alt="Silhouette of mountains" src="https://cdn.futura-sciences.com/sources/images/actu/thermometre-mesurer-temperature.jpg" />
     <ion-card-header>
-      <ion-card-title></ion-card-title>
+      <ion-card-title style="text-align: center;">Temperature</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
+      Here's the percentage of the temperature right now : <br>
+      <h2 style="text-align: center;color: aqua;">{{temperature}}</h2>
+      <!--<ion-button expand ="block"> System State </ion-button>-->
+      
+      
     </ion-card-content>
-  
-    <ion-button expand ="block">Get temperature </ion-button>
   </ion-card>
 </ion-content>

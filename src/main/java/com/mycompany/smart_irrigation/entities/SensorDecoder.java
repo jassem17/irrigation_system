@@ -18,7 +18,7 @@ public class SensorDecoder implements Decoder.Text<Sensor>{
         message.setIdSensor(jsonObject.getString("idSensor"));
         message.setIdParcel(jsonObject.getString("idParcel"));
         message.setSensorType(SensorType.valueOf(jsonObject.getString("sensorType")));
-        message.setSensorValue(jsonObject.getInt("value"));
+        message.setSensorValue(jsonObject.getInt("sensorValue"));
         return message;
 
     }

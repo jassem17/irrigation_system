@@ -7,23 +7,25 @@
     <h4>Signup</h4>
     <p>Register to get started</p>
   </div>
+  <form [formGroup]="register" (ngSubmit)="signUp()">
   <fieldset  class="input-item">
-    <legend>Full Name</legend> 
-    <ion-input type="" placeholder="Full name"></ion-input>
+    <legend>Username</legend> 
+    <ion-input type="" formControlName="username"></ion-input>
   </fieldset>
   <fieldset  class="input-item">
-    <legend>Email Id</legend> 
-    <ion-input type="email" placeholder="name@domain.com"></ion-input>
+    <legend>Email</legend> 
+    <ion-input type="email" placeholder="name@domain.com" formControlName="email"></ion-input>
   </fieldset>
   <fieldset  class="input-item">
     <legend>Password</legend> 
-    <ion-input type="password" placeholder="********"></ion-input>
+    <ion-input type="password" placeholder="********" formControlName="password"></ion-input>
   </fieldset>
   <p>By signing up you're agreed to our Terms & Conditions</p>
 
   <div class="ion-margin-top">
-    <ion-button expand="block" (click)="log()">SIGN UP</ion-button>
+    <ion-button expand="block" type="submit" [disabled]="!register.valid">SIGN UP</ion-button>
   </div>
+</form>
 
   <div class="ion-margin-top ion-text-center">
     <a (click)="dismiss()">Close</a>

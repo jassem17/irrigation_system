@@ -6,20 +6,25 @@
       <ion-col size="5">
         <img src="../../assets/green.png" class="logo" />
         <div>
-          <ion-button color="white" class="ion-margin" (click)="home()">
+          <ion-button color="white" class="ion-margin" (click)="state()">
             <ion-icon slot="icon-only" name="Home" color="primary" size="large"></ion-icon>
+            System State
           </ion-button>
-          <ion-button color="white" class="ion-margin" (click)="sunny()">
+          <ion-button color="white" class="ion-margin" (click)="temperature()">
             <ion-icon slot="icon-only" name="thermometer-outline" color="primary" size="large"></ion-icon>
+            Temperature
           </ion-button>
-          <ion-button color="white" class="ion-margin" (click)="water()">
+          <ion-button color="white" class="ion-margin" (click)="humidity()">
+            <ion-icon slot="icon-only" name="cloud-outline" color="primary" size="large"></ion-icon>
+            Humidity
+          </ion-button>
+          <ion-button color="white" class="ion-margin" (click)="waterLevel()">
             <ion-icon slot="icon-only" name="water-outline" color="primary" size="large"></ion-icon>
+            Water Level
           </ion-button>
           <ion-button color="white" class="ion-margin" (click)="welc()">
             <ion-icon slot="icon-only" name="log-out" color="primary" size="large"></ion-icon>
-          </ion-button>
-          <ion-button color="white" class="ion-margin" (click)="fields()">
-            <ion-icon slot="icon-only" name="log-out" color="primary" size="large"></ion-icon>
+                Home
           </ion-button>
         </div>
       </ion-col>

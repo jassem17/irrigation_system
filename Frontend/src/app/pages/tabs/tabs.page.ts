@@ -5,6 +5,16 @@ import { HumidityPage } from './humidity/humidity.page';
 import { WelcomePage } from 'src/app/welcome/welcome.page';
 import { TempPage } from './temp/temp.page';
 import { FieldsPage } from './fields/fields.page';
+import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
+import { WaterLevelPage } from './water-level/water-level.page';
+
+
+export interface MessageJSON {
+  idSensor: string,
+  idParcel: string,
+  sensorType: string,
+  sensorValue: number,
+}
 
 @Component({
   selector: 'app-tabs',
@@ -13,16 +23,36 @@ import { FieldsPage } from './fields/fields.page';
 })
 export class TabsPage implements OnInit {
 
+  myWebSocket: any = webSocket('ws://localhost:8080/smart_irrigation-1.0-SNAPSHOT/channel');
+
+
   selectedTab: any;
   @ViewChild('tabs', {static: false}) tabs: IonTabs;
 
   constructor(
     public modalCtrl: ModalController,
-    ) { }
+    ) {
+      this.myWebSocket.subscribe(
+        msg => {
+          console.log('message received: ' + msg);
+          console.log("ServerResponse idSensor: " + msg.idSensor);
+          console.log("ServerResponse idParcel: " + msg.idParcel);
+          console.log("ServerResponse sensorType: " + msg.sensorType);
+          console.log("ServerResponse sensorValue: " + msg.sensorValue);
+  
+        },
+        // Called whenever there is a message from the server    
+        err => console.log('Erro received:', err),
+        // Called if WebSocket API signals some kind of error    
+        () => console.log('complete')
+        // Called when connection is closed (for whatever reason)  
+      );
+      
+     }
 
   ngOnInit() {
   }
-  async home () {
+  async state () {
     const modal = await this.modalCtrl.create({
       component: HomePage,
       animated: true,
@@ -32,7 +62,7 @@ export class TabsPage implements OnInit {
     })
     return await modal.present();
   }
-  async sunny () {
+  async temperature () {
     const modal = await this.modalCtrl.create({
       component: TempPage,
       animated: true,
@@ -42,7 +72,7 @@ export class TabsPage implements OnInit {
     })
     return await modal.present();
   }
-  async water () {
+  async humidity () {
     const modal = await this.modalCtrl.create({
       component: HumidityPage,
       animated: true,
@@ -62,9 +92,9 @@ export class TabsPage implements OnInit {
     })
     return await modal.present();
   }
-  async fields () {
+  async waterLevel () {
     const modal = await this.modalCtrl.create({
-      component: FieldsPage,
+      component: WaterLevelPage,
       animated: true,
       mode: 'ios',
       backdropDismiss: false,

@@ -3,9 +3,10 @@
     <ion-title>parcel</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<ion-content>
   <ion-grid>
     <ion-row>
+      <img src="../../assets/green.png" class="logo" />
         <ion-card
         *ngFor="let parcel of parcels;"
         (click)="getSensorById(parcel.idParcel)">
@@ -19,4 +20,4 @@
         </ion-card>
     </ion-row>
   </ion-grid>
-  
+</ion-content> 

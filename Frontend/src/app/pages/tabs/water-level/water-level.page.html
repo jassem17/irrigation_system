@@ -3,7 +3,7 @@
    
     <ion-item color="primary">
       <ion-icon [name]="selectedTab == 'wishlist' ? 'water' : 'chevron-back-outline'" (click)="tab()"></ion-icon>
-      <ion-label>Humidity </ion-label>
+      <ion-label>Water Level </ion-label>
       <ion-avatar slot="end">
         <img src="../../assets/logo.png" />
       </ion-avatar>
@@ -13,14 +13,14 @@
 
 <ion-content>
   <ion-card>
-    <img alt="Silhouette of mountains" src="https://static-int.testo.com/media/4c/fa/4655130c014a/Teaser-Unterseiten-2000x1500pix_master.jpg" />
+    <img alt="Silhouette of mountains" src="https://divaplastiques.com/wp-content/uploads/2015/04/Bassin_irrigation4-scaled.jpg" />
     <ion-card-header>
-      <ion-card-title style="text-align: center;">Humidity</ion-card-title>
+      <ion-card-title style="text-align: center;">Water Level</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      Here's the percentage of the humidity right now : <br>
-      <h2 style="text-align: center;color: aqua;">{{hum}}</h2>
+      Here's the percentage of the water Level right now : <br>
+      <h2 style="text-align: center;color: aqua;">{{waterLevel}}</h2>
       <!--<ion-button expand ="block"> System State </ion-button>-->
       
       

@@ -23,7 +23,7 @@ public class Sensor implements Serializable {
     private SensorType sensorType;
 
     @Column
-    private double sensorValue;
+    private int sensorValue;
 
     public Sensor(){
 
@@ -37,7 +37,7 @@ public class Sensor implements Serializable {
         this.idParcel = idParcel;
     }
 
-    public Sensor(String idSensor, SensorType sensorType, String idParcel,double sensorValue){
+    public Sensor(String idSensor, SensorType sensorType, String idParcel,int sensorValue){
         this.idSensor=idSensor;
         this.sensorType=sensorType;
         this.idParcel = idParcel;
@@ -48,7 +48,7 @@ public class Sensor implements Serializable {
         return sensorValue;
     }
 
-    public void setSensorValue(double sensorValue) {
+    public void setSensorValue(int sensorValue) {
         this.sensorValue = sensorValue;
     }
 
@@ -85,8 +85,9 @@ public class Sensor implements Serializable {
     public String toString() {
         return "Sensor{" +
                 "idParcel=" + idParcel +
-                "idSensor=" + idSensor +
+                ", idSensor=" + idSensor +
                 ", sensorType=" + sensorType +
+                ", sensorValue=" + sensorValue +
                 '}';
     }
 

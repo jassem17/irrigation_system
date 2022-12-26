@@ -16,7 +16,7 @@ public class SensorEncoder implements Encoder.Text<Sensor> {
                 .add("idSensor", message.getIdSensor())
                 .add("idParcel", message.getIdParcel())
                 .add("sensorType", message.getSensorType())
-                .add("value", message.getSensorValue())
+                .add("sensorValue", message.getSensorValue())
                 .build();
         return jsonObject.toString();
 
