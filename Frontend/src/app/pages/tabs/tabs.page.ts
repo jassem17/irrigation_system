@@ -23,7 +23,7 @@ export interface MessageJSON {
 })
 export class TabsPage implements OnInit {
 
-  myWebSocket: any = webSocket('ws://localhost:8080/smart_irrigation-1.0-SNAPSHOT/channel');
+  myWebSocket: any = webSocket('wss://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/channel');
 
 
   selectedTab: any;

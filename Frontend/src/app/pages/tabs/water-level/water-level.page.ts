@@ -17,7 +17,7 @@ export interface MessageJSON {
   styleUrls: ['./water-level.page.scss'],
 })
 export class WaterLevelPage implements OnInit {
-  myWebSocket: any = webSocket('ws://localhost:8080/smart_irrigation-1.0-SNAPSHOT/channel');
+  myWebSocket: any = webSocket('wss://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/channel');
   public waterLevel :any;
 
  constructor(
@@ -31,7 +31,10 @@ export class WaterLevelPage implements OnInit {
           console.log("ServerResponse sensorType: " + msg.sensorType);
           console.log("ServerResponse sensorValue: " + msg.sensorValue);
           wl=msg.sensorValue;
-          this.waterLevel = wl;
+          if(msg.sensorType=="WATER_LEVEL"){
+            this.waterLevel = wl;
+          }
+          
   
         },
         // Called whenever there is a message from the server    

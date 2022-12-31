@@ -75,6 +75,12 @@ public class PersonResource {
 
     }
 
+    @POST
+    @Path("/login/{username}")
+    public User login(@PathParam("username") String username, String password){
+        return service.login(username,password);
+    }
+
     @PUT
     @Path("/{id}")
     public void update(@PathParam("id") String id, User user) {

@@ -12,8 +12,8 @@ import { ParcelPage } from '../parcel/parcel.page';
 export class FieldsPage implements OnInit {
 
   public fields : any;
-  private urlField = "http://localhost:8080/smart_irrigation-1.0-SNAPSHOT/api/field/";
-  private urlParcel = "http://localhost:8080/smart_irrigation-1.0-SNAPSHOT/api/field/parcels";
+  private urlField = "https://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/api/field/";
+  private urlParcel = "https://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/api/field/parcels";
 
   constructor(private fieldService:FieldServiceService ,private http:HttpClient,private router:Router) {
     this.getFieldsList();

@@ -11,8 +11,8 @@ export class ParcelPage implements OnInit {
 
   public parcels : any;
   public paa:any;
-  private url = "http://localhost:8080/smart_irrigation-1.0-SNAPSHOT/api/parcel/";
-  private urlSensor = "http://localhost:8080/smart_irrigation-1.0-SNAPSHOT/api/parcel/sensor";
+  private url = "https://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/api/parcel/";
+  private urlSensor = "https://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/api/parcel/sensor";
 
   constructor(private http:HttpClient,private router:Router) {
     this.getParcelList();

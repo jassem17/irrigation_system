@@ -14,10 +14,9 @@ import jakarta.inject.Inject;
 import javax.security.enterprise.SecurityContext;
 import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import java.security.Principal;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
+
 
 @ApplicationScoped
 public class SecurityService {
@@ -30,6 +29,8 @@ public class SecurityService {
 
     @Inject
     private SecurityContext securityContext;
+
+    private Random id = new Random();
 
     public void create(User user) {
 
@@ -45,7 +46,7 @@ public class SecurityService {
                     .withPasswordHash(passwordHash)
 
                     .withPassword(user.getPassword())
-                    .withUserId(user.getUserId())
+                    .withUserId(id.nextLong())
                     .withUsername(user.getUsername())
                     .withEmail((user.getEmail()))
                     .withRoles(getRole())
@@ -122,6 +123,19 @@ public class SecurityService {
     public User findBy(String username) {
         return repository.findById(username)
                 .orElseThrow(() -> new UserNotAuthorizedException());
+    }
+
+    public User login(String username, String password) {
+        final User user = repository.findByUsername(username);
+
+        System.out.println(user.getUsername());
+        System.out.println(password);
+        System.out.println(username);
+        if (Objects.equals(username,user.getUsername())) {
+            return user;
+        }
+        throw new UserNotAuthorizedException();
+
     }
 
 

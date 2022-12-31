@@ -6,7 +6,6 @@ F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\R
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\DocumentManagerProducer.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\mqtt\Subscribe.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\SecurityService.java
-F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\Oauth2\Oauth2Authentication.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\Oauth2\Token.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\SensorDecoder.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\SensorType.java
@@ -17,6 +16,7 @@ F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\R
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\RemoveUser.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\ErrorMessage.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\Oauth2\GrantType.java
+F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\CORSFilter.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\Oauth2\Oauth2Response.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\mqtt\MqttConnection.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\JAXRSConfiguration.java

@@ -18,7 +18,7 @@ export interface MessageJSON {
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  myWebSocket: any = webSocket('ws://localhost:8080/smart_irrigation-1.0-SNAPSHOT/channel');
+  myWebSocket: any = webSocket('wss://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/channel');
 
 
   slideOpts = {

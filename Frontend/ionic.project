@@ -1,0 +1,10 @@
+{
+  "name": "proxy-example",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/welcome",
+      "proxyUrl": "https://smart-irrigation.me:8443/api/person"
+    }
+  ]
+}

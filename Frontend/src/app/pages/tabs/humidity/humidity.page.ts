@@ -19,7 +19,7 @@ export interface MessageJSON {
 })
 export class HumidityPage implements OnInit {
 
-  myWebSocket: any = webSocket('ws://localhost:8080/smart_irrigation-1.0-SNAPSHOT/channel');
+  myWebSocket: any = webSocket('wss://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/channel');
 
   public hum :any;
 
@@ -34,7 +34,10 @@ export class HumidityPage implements OnInit {
           console.log("ServerResponse sensorType: " + msg.sensorType);
           console.log("ServerResponse sensorValue: " + msg.sensorValue);
           humidity=msg.sensorValue;
-          this.hum = humidity;
+          
+          if(msg.sensorType=="MOISTURE"){
+            this.hum = humidity;
+          }
 
   
         },

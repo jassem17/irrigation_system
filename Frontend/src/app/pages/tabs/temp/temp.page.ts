@@ -18,7 +18,7 @@ export interface MessageJSON {
 })
 export class TempPage implements OnInit {
   
-  myWebSocket: any = webSocket('ws://localhost:8080/smart_irrigation-1.0-SNAPSHOT/channel');
+  myWebSocket: any = webSocket('wss://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/channel');
   public temperature :any;
 
  constructor(
@@ -32,7 +32,10 @@ export class TempPage implements OnInit {
           console.log("ServerResponse sensorType: " + msg.sensorType);
           console.log("ServerResponse sensorValue: " + msg.sensorValue);
           temp=msg.sensorValue;
-          this.temperature = temp;
+          if(msg.sensorType=="TEMPERATURE"){
+            this.temperature = temp;
+          }
+          
   
         },
         // Called whenever there is a message from the server    

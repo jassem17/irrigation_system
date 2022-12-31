@@ -10,7 +10,7 @@ import { LoginPage } from '../login/login.page';
 })
 export class RegisterPage implements OnInit {
 
-private urlRegister= "http://localhost:8080/smart_irrigation-1.0-SNAPSHOT/api/person"
+private urlRegister= "https://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/api/person"
 
   public register : FormGroup
   
@@ -21,7 +21,7 @@ private urlRegister= "http://localhost:8080/smart_irrigation-1.0-SNAPSHOT/api/pe
       email : ['', Validators.required],
       password: ['',Validators.required],
       roles:[["USER"]],
-      userId:123
+      userId:555
     }
     ) ;
    }

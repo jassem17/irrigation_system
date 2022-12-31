@@ -11,11 +11,7 @@ public interface UserRepository extends Repository<User, String> {
 
     Stream<User> findAll();
 
-    Page<User> findAll(Pagination pagination);
+    User findByUsername(String username);
 
-    Stream<User> findByUserId(Long userId);
 
-    Stream<User> findByUsername(String username);
-
-    Stream<User> findByEmail(String email);
 }

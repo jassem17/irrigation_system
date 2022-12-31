@@ -45,8 +45,7 @@ public class User implements Serializable {
     private Pbkdf2PasswordHash passwordHash;
 
 
-   /* @Column
-    private Set<String> telephones;*/
+
 
     public User() {
     }
@@ -189,6 +188,7 @@ public class User implements Serializable {
                 "username='" + username + '\'' +
                 ", email=" + email +
                 ", roles=" + roles +
+                ", password=" + password +
                 '}';
     }
 }
