@@ -105,7 +105,7 @@ public class MqttConnection {
                             System.out.println("Sensor :"+ message+" is successfully added");
                             JSONObject obj = new JSONObject(new String(message.getPayload()));
                             Sensor sensor =new Sensor();
-                            sensor.setIdParcel(obj.getString("idParcel"));
+                            sensor.setIdParcel("1");
                             sensor.setIdSensor(obj.getString("idSensor"));
                             sensor.setSensorType(SensorType.valueOf(obj.getString("sensorType")));
                             sensor.setSensorValue(obj.getInt("sensorValue"));

@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'water-level',
     loadChildren: () => import('./water-level/water-level.module').then( m => m.WaterLevelPageModule)
   },
+  {
+    path: 'navbar',
+    loadChildren: () => import('./navbar/navbar.module').then( m => m.NavbarPageModule)
+  },
 
   
   

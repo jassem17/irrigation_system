@@ -7,9 +7,9 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Validator;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validator;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Set;
@@ -37,8 +37,8 @@ public class Oauth2Service {
             throw new ConstraintViolationException(violations);
         }
 
-        final User user = securityService.findBy(request.getUsername());
-        final UserToken userToken = repository.findById(request.getUsername()).orElse(new UserToken(user.getUsername()));
+        final User user = securityService.findBy(request.getUsername(), request.getPassword());
+        final UserToken userToken = repository.findByUsername(request.getUsername()).orElse(new UserToken(user.getUsername()));
 
         final Token token = Token.generate();
 
@@ -61,7 +61,7 @@ public class Oauth2Service {
 
         final UserToken userToken = repository.findByRefreshToken(request.getRefreshToken())
                 .orElseThrow(() -> new UserNotAuthorizedException("Invalid Token"));
-        final User user = securityService.findBy(userToken.getUsername());
+        final User user = securityService.findBy(userToken.getUsername(), request.getPassword());
         final Token token = Token.generate();
         final String jwt = UserJWT.createToken(user, token, EXPIRES);
         AccessToken accessToken = new AccessToken(token.get(), jwt, EXPIRES);

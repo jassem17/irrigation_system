@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { LoginPage } from '../login/login.page';
 @Component({
@@ -10,12 +11,12 @@ import { LoginPage } from '../login/login.page';
 })
 export class RegisterPage implements OnInit {
 
-private urlRegister= "https://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/api/person"
+private urlRegister= "https://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/api/person/signup"
 
   public register : FormGroup
   
   constructor(
-    public modalCtrl: ModalController, private fb:FormBuilder, private http:HttpClient) {
+    public modalCtrl: ModalController, private fb:FormBuilder, private http:HttpClient,private router:Router) {
     this.register = this.fb.group({
       username :['',Validators.required],
       email : ['', Validators.required],
@@ -35,8 +36,10 @@ signUp(){
   this.http.post(this.urlRegister,body).subscribe(
     data => {
       console.log(data)
+      this.router.navigate(['login'])
     },err=>{
       console.log(err)
+      alert('invalid information')
     }
   )
 }

@@ -13,7 +13,7 @@ import jakarta.nosql.mapping.Id;
 import javax.json.bind.annotation.JsonbVisibility;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
+import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashSet;
@@ -81,8 +81,8 @@ public class User implements Serializable {
         return email;
     }
 
-    public void updatePassword(String password, Pbkdf2PasswordHash passwordHash) {
-        this.password = passwordHash.generate(password.toCharArray());
+    public void updatePassword(String password) {
+        this.password = this.passwordHash.generate(password.toCharArray());
     }
 
     public void addRoles(Set<Role> roles) {

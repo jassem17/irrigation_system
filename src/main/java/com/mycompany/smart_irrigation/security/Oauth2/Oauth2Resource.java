@@ -6,7 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.function.Supplier;
 
 @ApplicationScoped
@@ -22,9 +22,9 @@ public class Oauth2Resource {
 
     @POST
     @Path("token")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Oauth2Response token(@BeanParam @Valid Oauth2Request request) {
+    public Oauth2Response token(@Valid Oauth2Request request) {
         switch (request.getGrandType()) {
             case PASSWORD:
                 return service.token(request);

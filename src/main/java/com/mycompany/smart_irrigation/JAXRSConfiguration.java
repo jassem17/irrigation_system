@@ -12,9 +12,6 @@ import javax.security.enterprise.authentication.mechanism.http.BasicAuthenticati
  * @author Adam M. Gamboa G
  */
 @ApplicationPath("api")
-@BasicAuthenticationMechanismDefinition(realmName = "userRealm")
-@ApplicationScoped
-@DeclareRoles({"ADMIN", "USER"})
 public class JAXRSConfiguration extends Application {
     
 }

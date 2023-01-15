@@ -11,8 +11,9 @@ import com.mycompany.smart_irrigation.security.Exception.UserNotFoundException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
-import javax.security.enterprise.SecurityContext;
-import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
+import jakarta.security.enterprise.SecurityContext;
+import jakarta.security.enterprise.identitystore.PasswordHash;
+import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -34,9 +35,9 @@ public class SecurityService {
 
     public void create(User user) {
 
-        if (repository.existsById(user.getUserId().toString())) {
+        if (repository.existsById(user.getUserId().toString()) || repository.findByUsername(user.getUsername()).isPresent())  {
 
-            throw new UserAlreadyExistException("There is an user with this id: " + user.getUserId());
+            throw new UserAlreadyExistException("There is an user with this username: " + user.getUsername());
 
         } else {
 
@@ -59,32 +60,33 @@ public class SecurityService {
 
     }
 
-    public void updatePassword(String id, User dto) {
+    public void updatePassword(String username, User user1) {
 
         final Principal principal = securityContext.getCallerPrincipal();
 
-        if (isForbidden(id, securityContext, principal)) {
+        if (isForbidden(username, securityContext, principal)) {
 
             throw new UserForbiddenException();
 
         }
 
-        final User user = repository.findById(id)
+        final User user = repository.findByUsername(username)
 
-                .orElseThrow(() -> new UserNotFoundException(id));
+                .orElseThrow(() -> new UserNotFoundException(username));
 
-        user.updatePassword(dto.getPassword(), passwordHash);
+        System.out.println(user1.getPassword());
+        user.updatePassword(user1.getPassword());
 
         repository.save(user);
 
     }
 
 
-    public void addRole(String id, RoleDTO dto) {
+    public void addRole(String username, RoleDTO dto) {
 
-        final User user = repository.findById(id)
+        final User user = repository.findByUsername(username)
 
-                .orElseThrow(() -> new UserNotFoundException(id));
+                .orElseThrow(() -> new UserNotFoundException(username));
 
         user.addRoles(dto.getRoles());
 
@@ -120,25 +122,16 @@ public class SecurityService {
         repository.deleteById(id);
     }
 
-    public User findBy(String username) {
-        return repository.findById(username)
+    public User findBy(String username,String password) {
+        final User user = repository.findByUsername(username)
                 .orElseThrow(() -> new UserNotAuthorizedException());
-    }
 
-    public User login(String username, String password) {
-        final User user = repository.findByUsername(username);
-
-        System.out.println(user.getUsername());
-        System.out.println(password);
-        System.out.println(username);
-        if (Objects.equals(username,user.getUsername())) {
+        if (passwordHash.verify(password.toCharArray(), user.getPassword())) {
             return user;
         }
         throw new UserNotAuthorizedException();
 
     }
-
-
     private Set<Role> getRole() {
 
         if (repository.count() == 0) {

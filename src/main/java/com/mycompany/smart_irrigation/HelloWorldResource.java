@@ -34,7 +34,7 @@ public class HelloWorldResource {
 
     @Path("user")
     @GET
-    @RolesAllowed({"ADMIN", "USER"})
+    @RolesAllowed("USER")
     @Produces("text/plain")
     public String user() {
         return "hello from user";

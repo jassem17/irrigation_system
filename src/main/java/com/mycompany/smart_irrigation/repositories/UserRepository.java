@@ -5,13 +5,15 @@ import jakarta.nosql.mapping.Page;
 import jakarta.nosql.mapping.Pagination;
 import jakarta.nosql.mapping.Repository;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public interface UserRepository extends Repository<User, String> {
 
     Stream<User> findAll();
 
-    User findByUsername(String username);
+    Optional<User> findByUsername(String username);
+
 
 
 }

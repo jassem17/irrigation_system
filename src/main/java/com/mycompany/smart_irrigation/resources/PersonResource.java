@@ -4,18 +4,11 @@ import com.mycompany.smart_irrigation.entities.RoleDTO;
 import com.mycompany.smart_irrigation.entities.User;
 import com.mycompany.smart_irrigation.repositories.UserRepository;
 import com.mycompany.smart_irrigation.security.SecurityService;
+import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -56,9 +49,10 @@ public class PersonResource {
     }
 
     @GET
-    @Path("/single/{id}")
-    public User findById(@PathParam("id") String id) {
-        return repository.findById(id).orElseThrow(NOT_FOUND);
+    @RolesAllowed({"ADMIN","USER"})
+    @Path("/single/{username}")
+    public User findById(@PathParam("username") String username) {
+        return repository.findByUsername(username).orElseThrow(NOT_FOUND);
     }
 /*
     @POST
@@ -68,27 +62,31 @@ public class PersonResource {
 
     }*/
 
+    @Path("/signup")
     @POST
+    @PermitAll
     public void save(User user) {
 
         service.create(user);
 
     }
-
+/*
     @POST
     @Path("/login/{username}")
     public User login(@PathParam("username") String username, String password){
         return service.login(username,password);
     }
-
+*/
     @PUT
     @Path("/{id}")
+    @RolesAllowed("USER")
     public void update(@PathParam("id") String id, User user) {
         repository.save(user);
     }
 
     @PUT
     @Path("/role/{id}")
+    @RolesAllowed("ADMIN")
     public void updateRole(@PathParam("id") String id, RoleDTO role) {
         service.addRole(id,role);
     }
@@ -100,9 +98,10 @@ public class PersonResource {
         service.delete(id);
     }
 
-    @Path("/{id}")
+    @Path("/{username}")
     @PUT
-    public void updatePassword(@PathParam("id") String id, User user){
-        service.updatePassword(id,user);
+    @RolesAllowed("USER")
+    public void updatePassword(@PathParam("username") String username,User user){
+        service.updatePassword(username,user);
     }
 }

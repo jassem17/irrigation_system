@@ -3,24 +3,25 @@ package com.mycompany.smart_irrigation.security.Oauth2;
 import com.mycompany.smart_irrigation.FieldPropertyVisibilityStrategy;
 import jakarta.ws.rs.FormParam;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbVisibility;
 import javax.validation.constraints.NotBlank;
 
 @JsonbVisibility(FieldPropertyVisibilityStrategy.class)
 public class Oauth2Request {
-    @FormParam("grand_type")
+    @JsonbProperty("grand_type")
     @NotBlank
     private String grandType;
 
-    @FormParam("username")
+    @JsonbProperty("username")
     @NotBlank(groups = {GenerateToken.class})
     private String username;
 
-    @FormParam("password")
+    @JsonbProperty("password")
     @NotBlank(groups = {GenerateToken.class})
     private String password;
 
-    @FormParam("refresh_token")
+    @JsonbProperty("refresh_token")
     @NotBlank(groups = {RefreshToken.class})
     private String refreshToken;
 
