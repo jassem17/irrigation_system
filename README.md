@@ -18,3 +18,5 @@ _Client Side:_
 * Run the application  
   ionic serve 
  ## Deployment 
+ The Jakarta server part is deployed on an Azure virtual machine with an Ubuntu 20.4 OS and accessible via the URL smart-irrigation.me  
+ This server is secured with a Wildard SSL certificate associated with an rsa 4096 key, issued by Let's Encrypt and generated 
