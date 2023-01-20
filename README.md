@@ -13,7 +13,7 @@ the waste of water by cutting automatically the irrigation in case of rain throu
 ## Technical Documentation 
  _Server Side:_
 * Download and Install Jakarta 
-* Run the server 
+* Run the server  
 _Client Side:_
 * Run the application 
   ionic serve 
