@@ -10,7 +10,7 @@ the waste of water by cutting automatically the irrigation in case of rain throu
 * Backend : Mosquitto , raspberry pi 
 * Database : Mongo DB
 [![image](https://www.linkpicture.com/q/Sans-titre_22.png)](https://www.linkpicture.com/view.php?img=LPic63ca721373bfd1355904269)
-## Technical Documentation 
+## Technical Documentation  
  _Server Side:_
 * Download and Install Jakarta 
 * Run the server  
