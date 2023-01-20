@@ -11,10 +11,10 @@ the waste of water by cutting automatically the irrigation in case of rain throu
 * Database : Mongo DB
 [![image](https://www.linkpicture.com/q/Sans-titre_22.png)](https://www.linkpicture.com/view.php?img=LPic63ca721373bfd1355904269)
 ## Technical Documentation  
- _Server Side:_
+ ######Server Side:
 * Download and Install Jakarta 
 * Run the server  
-_Client Side:_
+######Client Side:_
 * Run the application  
   ionic serve 
  ## Deployment 
