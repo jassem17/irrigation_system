@@ -17,3 +17,4 @@ the waste of water by cutting automatically the irrigation in case of rain throu
 _Client Side:_
 * Run the application 
   ionic serve 
+ ## Deployment 
