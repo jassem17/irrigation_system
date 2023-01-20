@@ -20,3 +20,4 @@ _Client Side:_
  ## Deployment 
  The Jakarta server part is deployed on an Azure virtual machine with an Ubuntu 20.4 OS and accessible via the URL smart-irrigation.me  
  This server is secured with a Wildard SSL certificate associated with an rsa 4096 key, issued by Let's Encrypt and generated 
+with the command : sudo certbot certonly --manual -d *.$smart-irrigation.me -d $smart-irrigation.me --agree-tos --manual-public-ip-logging-ok --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory --register-unsafely-without-email --rsa-key-size 4096
