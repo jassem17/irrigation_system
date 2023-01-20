@@ -5,8 +5,8 @@ to keep the plants alive as much as possible, as each plant needs a specific hum
 The irrigation system to be built automatically controls the irrigation cycles and prevents
 the waste of water by cutting automatically the irrigation in case of rain through an alert.
 ## Technologies 
-#### Front end : Ionic ,  Capacitor
-#### Middleware : Jakarta
-#### Backend : Mosquitto , raspberry pi 
-#### Database : Mongo DB
+#### * Front end : Ionic ,  Capacitor
+#### * Middleware : Jakarta
+#### * Backend : Mosquitto , raspberry pi 
+#### * Database : Mongo DB
 
