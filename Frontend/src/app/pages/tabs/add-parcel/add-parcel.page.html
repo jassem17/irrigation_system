@@ -1,0 +1,25 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="title">
+    <h4>Add Parcel to your Field</h4>
+    <p>Select the field where you will add a parcel</p>
+  </div>
+  <form [formGroup]="addparcel" (ngSubmit)="addParcel()">
+  <ion-item>
+    <ion-label>Field</ion-label>
+    <ion-select formControlName="idField">
+      <ion-select-option value={{field.idField}} *ngFor="let field of fields" >{{field.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div class="ion-margin-top">
+    <ion-button expand="block" type="submit" [disabled]="!addparcel.valid">ADD</ion-button>
+  </div>
+</form>
+
+  <div class="ion-margin-top ion-text-center">
+    <a (click)="dismiss()">Close</a>
+  </div>
+</ion-content>

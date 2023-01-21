@@ -12,7 +12,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 import jakarta.security.enterprise.SecurityContext;
-import jakarta.security.enterprise.identitystore.PasswordHash;
 import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import java.security.Principal;
 import java.util.*;
@@ -119,7 +118,15 @@ public class SecurityService {
     }
 
     public void delete(String id){
-        repository.deleteById(id);
+        Optional<User> user = repository.findById(id);
+
+        String userId = String.valueOf(user.get().getUserId());
+        System.out.println("-------"+userId);
+        System.out.println("-------"+id);
+        if(id.substring(0, 14).equals(userId.substring(0, 14))){
+            System.out.println("done");
+            repository.deleteById(id);
+        }
     }
 
     public User findBy(String username,String password) {

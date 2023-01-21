@@ -1,0 +1,33 @@
+ion-content{
+  --background: linear-gradient(0deg, #c476c4 20%, #40c2d0 100%),url('../../assets/leaves.jpg')  100% 100%;
+}
+ion-card-header.ios {
+    display: flex;
+    flex-flow: column-reverse;
+  }
+  ion-card-header{
+    background: #bababa;
+  }
+  ion-card-content{
+    background: #bababa;
+  }
+
+  ion-title.title-large {
+    color: #c897d8;
+    font-size: 30px;
+  }
+  
+  ion-title {
+        text-align: center;
+
+  }
+  ion-toolbar {
+    --background: #40c2d0;
+  }
+  .title {
+    margin-bottom: 30px;
+    color:white;
+}
+.title p {
+  margin-top: 0 !important;
+}

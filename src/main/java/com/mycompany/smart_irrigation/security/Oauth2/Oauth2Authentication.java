@@ -15,10 +15,9 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@ApplicationScoped
-@Priority(Priorities.AUTHENTICATION)
-public class Oauth2Authentication implements HttpAuthenticationMechanism {
-    private static final Pattern CHALLENGE_PATTERN = Pattern.compile("^Bearer *([^ ]+) *$", Pattern.CASE_INSENSITIVE);
+
+public class Oauth2Authentication {
+   /* private static final Pattern CHALLENGE_PATTERN = Pattern.compile("^Bearer *([^ ]+) *$", Pattern.CASE_INSENSITIVE);
     @Inject
     private UserTokenRepository repository;
 
@@ -27,7 +26,7 @@ public class Oauth2Authentication implements HttpAuthenticationMechanism {
                                                 HttpMessageContext httpMessageContext) {
 
         System.out.println(request.getRequestURI());
-        if(!(request.getRequestURI().contains("oauth2") || request.getRequestURI().contains("signup") || request.getRequestURI().contains("websocket_channel"))    ) {
+        if(!(request.getRequestURI().contains("oauth2") || request.getRequestURI().contains("signup") || request.getRequestURI().contains("channel"))    ) {
             final String authorization = request.getHeader("Authorization");
             System.out.println(authorization);
             Matcher matcher = CHALLENGE_PATTERN.matcher(Optional.ofNullable(authorization).orElse(""));
@@ -57,7 +56,7 @@ public class Oauth2Authentication implements HttpAuthenticationMechanism {
         }else {
             return  httpMessageContext.doNothing() ;
         }
-    }
+    }*/
 }
 
 

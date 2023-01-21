@@ -1,0 +1,7 @@
+{
+    "/*":{
+        "target":"https://smart-irrigation.me:8443",
+        "secure":false,
+        "logLevel":"debug"
+    }
+}

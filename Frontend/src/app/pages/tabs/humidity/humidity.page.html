@@ -12,6 +12,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card>
     <img alt="Silhouette of mountains" src="https://static-int.testo.com/media/4c/fa/4655130c014a/Teaser-Unterseiten-2000x1500pix_master.jpg" />
     <ion-card-header>

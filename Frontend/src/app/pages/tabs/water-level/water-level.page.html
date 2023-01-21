@@ -12,6 +12,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card>
     <img alt="Silhouette of mountains" src="https://divaplastiques.com/wp-content/uploads/2015/04/Bassin_irrigation4-scaled.jpg" />
     <ion-card-header>

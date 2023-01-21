@@ -1,0 +1,23 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="title">
+    <h4>Add Field</h4>
+    <p>Fill out the form below</p>
+  </div>
+  <form [formGroup]="addfield" (ngSubmit)="addField()">
+  <fieldset  class="input-item">
+    <legend>Field's name</legend> 
+    <ion-input type="" formControlName="name"></ion-input>
+  </fieldset>
+  <div class="ion-margin-top">
+    <ion-button expand="block" type="submit" [disabled]="!addfield.valid">ADD</ion-button>
+  </div>
+</form>
+
+  <div class="ion-margin-top ion-text-center">
+    <a (click)="dismiss()">Close</a>
+  </div>
+</ion-content>

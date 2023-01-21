@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button  (click)="logout()" style="background-color:rgb(226, 183, 182);color: black;">
+        <ion-icon slot="start" name="person-circle"></ion-icon>
+        {{user}}(LogOut)
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding ion-text-center">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+<ion-grid>
+  <ion-row>
+    <div class="title">
+      <h1>Welcome Admin! </h1>
+   </div>
+    <img src="../../assets/green.png" class="logo" />
+
+    
+      <!--<ion-card
+      *ngFor="let field of fields;" 
+    (click)="getParcelById(field.idField)">
+    
+        <ion-card-header >
+          <ion-item lines="none">
+            <p>{{ field.name }}</p>
+            <span>{{ field.idField }}</span>
+          </ion-item>
+        
+        </ion-card-header>
+      
+      </ion-card>-->
+
+      <ion-card *ngFor="let user of users;" 
+       >
+        <img alt="Silhouette of mountains" src="https://thumbs.dreamstime.com/b/silhouette-ou-ic%C3%B4ne-masculine-de-visage-profil-d-avatar-homme-personne-inconnue-anonyme-illustration-vecteur-dans-l-ai-138787686.jpg"  />
+        <ion-card-header>
+          
+          <ion-card-subtitle style="color: #000;">Roles : {{user.roles}}</ion-card-subtitle>
+          <ion-card-title style="text-align: center;text-transform: uppercase;color: #000"><h3>{{ user.username }}</h3></ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content style="color: #000;">
+          Email : {{user.email}}
+          <ion-button color="white" class="ion-margin"  (click)="getUser(user.username)">
+            <ion-icon slot="icon-only" name="reader-outline" color="primary" size="large"></ion-icon>
+            View Details
+          </ion-button>
+        </ion-card-content>
+        
+      </ion-card>
+      
+  </ion-row>
+</ion-grid>
+
+</ion-content>

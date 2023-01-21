@@ -46,7 +46,59 @@ export class TempPage implements OnInit {
       );
      }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.myWebSocket)
+    this.myWebSocket.subscribe(
+      msg => {
+        let temp : any
+        console.log('message received: ' + msg);
+        console.log("ServerResponse idSensor: " + msg.idSensor);
+        console.log("ServerResponse idParcel: " + msg.idParcel);
+        console.log("ServerResponse sensorType: " + msg.sensorType);
+        console.log("ServerResponse sensorValue: " + msg.sensorValue);
+        temp=msg.sensorValue;
+        if(msg.sensorType=="TEMPERATURE"){
+          this.temperature = temp;
+        }
+        
+
+      },
+      // Called whenever there is a message from the server    
+      err => console.log('Erro received:', err),
+      // Called if WebSocket API signals some kind of error    
+      () => console.log('complete')
+      // Called when connection is closed (for whatever reason)  
+    );
+  }
+  handleRefresh(event) {
+    setTimeout(() => {
+      console.log(this.myWebSocket)
+
+      // Any calls to load data go here
+      this.myWebSocket.subscribe(
+        msg => {
+          let temp : any
+          console.log('message received: ' + msg);
+          console.log("ServerResponse idSensor: " + msg.idSensor);
+          console.log("ServerResponse idParcel: " + msg.idParcel);
+          console.log("ServerResponse sensorType: " + msg.sensorType);
+          console.log("ServerResponse sensorValue: " + msg.sensorValue);
+          temp=msg.sensorValue;
+          if(msg.sensorType=="TEMPERATURE"){
+            this.temperature = temp;
+          }
+          
+  
+        },
+        // Called whenever there is a message from the server    
+        err => console.log('Erro received:', err),
+        // Called if WebSocket API signals some kind of error    
+        () => console.log('complete')
+        // Called when connection is closed (for whatever reason)  
+      );
+      event.target.complete();
+    }, 2000);
+  };
     async tab(){
       const modal = await this.modalCtrl.create({
         component: TabsPage,

@@ -1,0 +1,58 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button  (click)="logout()" style="background-color:rgb(226, 183, 182);color: black;">
+        <ion-icon slot="start" name="person-circle"></ion-icon>
+        {{user}}(LogOut)
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button style="color: rgb(226, 183, 182);" icon="arrow-undo-outline" defaultHref="/fields"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding ion-text-center">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="title">
+    
+    <h2>Here's Your Parcels</h2>
+ </div>
+  <ion-grid>
+    <ion-row>
+      <img src="../../assets/green.png" class="logo" />
+        <!--<ion-card
+        *ngFor="let parcel of parcels;"
+        (click)="getSensorById(parcel.idParcel)">
+          <ion-card-header >
+            <ion-item lines="none">
+              <p>parcel {{ parcel.idParcel }}</p>
+              
+            </ion-item>
+            <p>field {{ parcel.idField }}</p>
+          </ion-card-header>
+        </ion-card>-->
+        <ion-card *ngFor="let parcel of parcels;let i = index" [attr.data-index]="i"
+        (click)="getSensorById(parcel.idParcel)">
+        <img alt="Silhouette of mountains" src="https://previews.123rf.com/images/kristo74/kristo741508/kristo74150800031/44224584-birds-eye-view-of-the-agricultural-fields-and-parcel-.jpg" />
+        <ion-card-header>
+          <ion-card-title style="text-align: center;text-transform: uppercase;color: #000;">{{ i+1 }}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content style="color: #000;">
+          Click to see more information about this parcel <br><br>
+          <ion-button color="white" class="ion-margin" (click)="getSensorById(parcel.idParcel)" >
+            <ion-icon slot="icon-only" name="reader-outline" color="primary" size="large"></ion-icon>
+            View Details
+          </ion-button>
+        </ion-card-content>
+        
+      </ion-card>
+      <ion-button color="white" class="ion-margin" (click)="addParcels()" style="position: relative;;float: left;left: 25%;">
+        <ion-icon slot="icon-only" name="add-outline" color="primary" size="large"></ion-icon>
+        Add Parcel
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content> 

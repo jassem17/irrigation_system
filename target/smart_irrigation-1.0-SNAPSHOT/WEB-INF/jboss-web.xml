@@ -4,5 +4,4 @@
   <context-root>jakarta-nosql-demo</context-root>
 </glassfish-web-app>-->
 <jboss-web>
-  <security-domain></security-domain>
 </jboss-web>

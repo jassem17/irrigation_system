@@ -1,3 +1,30 @@
 ion-content{
-    --background: url('../../../assets/leaves.jpg')  100% 100%;
+    --background: linear-gradient(0deg, #c476c4 20%, #40c2d0 100%),url('../../../assets/leaves.jpg')  100% 100%;
+}
+
+ion-toolbar {
+    --background: #2492eb;
+  }
+
+.logo{
+    position: relative;
+    float: left;
+    left: 80%;
+    width: auto;
+    height: 30%;
+    margin-bottom: 50%;
+}
+ion-title {
+    text-align: center;
+
+}
+ion-toolbar {
+--background: #40c2d0;
+}
+.title {
+margin-bottom: 30px;
+color:white;
+}
+.title p {
+margin-top: 0 !important;
 }

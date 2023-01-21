@@ -9,6 +9,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { LoginPage } from './login.page';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginPageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage],
+  
 })
 export class LoginPageModule {}

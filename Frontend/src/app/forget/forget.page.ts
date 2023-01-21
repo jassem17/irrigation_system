@@ -15,6 +15,12 @@ export class ForgetPage implements OnInit {
 
   ngOnInit() {
   }
+  handleRefresh(event) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      event.target.complete();
+    }, 2000);
+  };
   async login() {
     const modal = await this.modalCtrl.create({
       component: LoginPage,

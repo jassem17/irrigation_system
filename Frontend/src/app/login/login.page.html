@@ -3,6 +3,9 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="title">
     <h4>Login</h4>
 
@@ -11,11 +14,11 @@
   <form [formGroup]="login" (ngSubmit)="SignIn()">
   <fieldset  class="input-item">
     <legend>Username</legend> 
-    <ion-input  placeholder="Alex" formControlName="username"></ion-input>
+    <ion-input  placeholder="Alex" formControlName="username" style="color: beige;"></ion-input>
   </fieldset>
   <fieldset  class="input-item">
     <legend>Password</legend> 
-    <ion-input type="password" placeholder="********" formControlName="password"></ion-input>
+    <ion-input type="password" placeholder="********" formControlName="password" style="color: beige;"></ion-input>
   </fieldset>
   
   <div class="ion-margin-top ion-text-right forget">

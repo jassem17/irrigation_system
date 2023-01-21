@@ -5,9 +5,9 @@ import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 
 export interface MessageJSON {
   idSensor: string,
-  idParcel: string,
+  //idParcel: string,
   sensorType: string,
-  sensorValue: number,
+  sensorValue: string,
 }
 
 
@@ -32,7 +32,13 @@ export class WaterLevelPage implements OnInit {
           console.log("ServerResponse sensorValue: " + msg.sensorValue);
           wl=msg.sensorValue;
           if(msg.sensorType=="WATER_LEVEL"){
-            this.waterLevel = wl;
+            
+            if(wl==0){
+              this.waterLevel = "LOW";
+            }
+            else if(wl=1){
+              this.waterLevel = "HEIGH";
+            }
           }
           
   
@@ -46,6 +52,33 @@ export class WaterLevelPage implements OnInit {
      }
 
   ngOnInit() {}
+  handleRefresh(event) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      this.myWebSocket.subscribe(
+        msg => {
+          let wl : any
+          console.log('message received: ' + msg);
+          console.log("ServerResponse idSensor: " + msg.idSensor);
+          console.log("ServerResponse idParcel: " + msg.idParcel);
+          console.log("ServerResponse sensorType: " + msg.sensorType);
+          console.log("ServerResponse sensorValue: " + msg.sensorValue);
+          wl=msg.sensorValue;
+          if(msg.sensorType=="WATER_LEVEL"){
+            this.waterLevel = wl;
+          }
+          
+  
+        },
+        // Called whenever there is a message from the server    
+        err => console.log('Erro received:', err),
+        // Called if WebSocket API signals some kind of error    
+        () => console.log('complete')
+        // Called when connection is closed (for whatever reason)  
+      );
+      event.target.complete();
+    }, 2000);
+  };
     async tab(){
       const modal = await this.modalCtrl.create({
         component: TabsPage,

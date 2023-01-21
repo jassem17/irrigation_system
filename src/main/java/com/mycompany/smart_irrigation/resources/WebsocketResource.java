@@ -14,6 +14,7 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.json.JSONObject;
 
 import javax.net.ssl.SSLSocketFactory;
 import java.io.IOException;
@@ -80,6 +81,18 @@ public class WebsocketResource {
             try {
                 System.out.println("DONEEEEEE!!!!!");
                 session.getBasicRemote().sendObject(sensor);
+
+            } catch (IOException | EncodeException e) {
+                System.out.println("BYYYYYYYYYE!!!!!");
+                e.printStackTrace();
+            }
+        }
+    }
+    public static void broadcastMessage2(JSONObject obj) {
+        for (Session session : sessions) {
+            try {
+                System.out.println("DONEEEEEE!!!!!");
+                session.getBasicRemote().sendObject(obj);
 
             } catch (IOException | EncodeException e) {
                 System.out.println("BYYYYYYYYYE!!!!!");

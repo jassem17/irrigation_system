@@ -76,6 +76,46 @@ export class HomePage implements OnInit {
     
     
   }
+  handleRefresh(event) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      this.myWebSocket.subscribe(
+        msg => {
+          console.log('message received: ' + msg);
+          console.log("ServerResponse idSensor: " + msg.idSensor);
+          console.log("ServerResponse idParcel: " + msg.idParcel);
+          console.log("ServerResponse sensorType: " + msg.sensorType);
+          console.log("ServerResponse sensorValue: " + msg.sensorValue);
+  
+          if(msg.sensorType=='TEMPERATURE'){
+            this.info.temp=msg.sensorValue;
+          }
+          else if(msg.sensorType=='MOISTURE'){
+            this.info.moisture=msg.sensorValue;
+          }
+          else if(msg.sensorType=='WATER_LEVEL'){
+            this.info.water_level=msg.sensorValue;
+          }
+          if (this.info.water_level=='yes' ){ 
+              if(this.info.temp<35 && this.info.moisture>40){
+                this.systemState='YES'
+              }
+              else{
+                this.systemState='NO'
+              }
+          }else{
+            this.systemState='NO'
+          }
+        },
+        // Called whenever there is a message from the server    
+        err => console.log('Erro received:', err),
+        // Called if WebSocket API signals some kind of error    
+        () => console.log('complete')
+        // Called when connection is closed (for whatever reason)  
+      );
+      event.target.complete();
+    }, 2000);
+  };
     async tab(){
       const modal = await this.modalCtrl.create({
         component: TabsPage,

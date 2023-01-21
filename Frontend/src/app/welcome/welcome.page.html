@@ -1,8 +1,14 @@
-<ion-header>
-
-</ion-header>
-
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button style="color: rgb(9, 168, 241);" icon="arrow-undo-outline" defaultHref="/first-page" (click)="tab()">Back</ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 <ion-content class="ion-padding ion-text-center" >
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
     <img src="../../assets/green.png" class="logo" />
 
     <div class="title">

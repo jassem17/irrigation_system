@@ -43,7 +43,7 @@ public class MqttConnection {
     @PostConstruct
     public void start() {
         try {
-            System.out.println("MQTT started");
+            System.out.println("MQTT start");
 
             //CLIENT CONNECTION OPTIONS
             MqttClient client = new MqttClient(
@@ -70,38 +70,8 @@ public class MqttConnection {
                 public void messageArrived(String topic, MqttMessage message) {
                     // System.out.println(new String(message.getPayload()));
                     System.out.println("We have message from  " + topic);
-                    if (topic.equals("field")) {
+                    if (topic.equals("Field/Parcel/Sensor")) {
                         try {
-                            //System.out.println(topic + "::::: " + new String(message.getPayload()));
-                            System.out.println("field :"+ message+" is successfully added");
-                            JSONObject obj = new JSONObject(new String(message.getPayload()));
-                            Field field =new Field() ;
-                            field.setIdField(obj.getString("idField"));
-                            field.setName(obj.getString("name"));
-                            fieldRepository.save(field);
-                            System.out.println("hiiiiiiiii");
-                        }
-                        catch (Exception e ) {
-                            System.out.println(e);
-                        }
-                    }
-                    else if (topic.equals("Field/Parcel")) {
-                        try {
-
-                            System.out.println("Parcel :"+ message+" is successfully added");
-                            JSONObject obj = new JSONObject(new String(message.getPayload()));
-                            Parcel parcel =new Parcel() ;
-                            //message  format  : field1/parcel1
-                            parcel.setIdParcel(obj.getString("idParcel"));
-                            parcel.setIdField(obj.getString("idField"));
-                            parcelRepository.save(parcel);
-                        }
-                        catch (Exception e ) {
-                        }
-                    }
-                    else if (topic.equals("Field/Parcel/Sensor")) {
-                        try {
-                           //message format idparcel/sensorid/sensortype/value
                             System.out.println("Sensor :"+ message+" is successfully added");
                             JSONObject obj = new JSONObject(new String(message.getPayload()));
                             Sensor sensor =new Sensor();
@@ -126,8 +96,6 @@ public class MqttConnection {
                 }
             });
 
-            client.subscribe("field", 1);
-            client.subscribe("Field/Parcel", 1);
             client.subscribe("Field/Parcel/Sensor", 1);
         } catch (MqttException e) {
 

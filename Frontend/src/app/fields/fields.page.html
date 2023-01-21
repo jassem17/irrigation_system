@@ -1,0 +1,64 @@
+
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button  (click)="logout()" style="background-color:rgb(226, 183, 182);color: black;">
+        <ion-icon slot="start" name="person-circle"></ion-icon>
+        {{user}}(LogOut)
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding ion-text-center">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="title">
+    <h1>Welcome ! </h1>
+    <p>Here's Your Fields</p>
+ </div>
+<ion-grid>
+  <ion-row>
+    <img src="../../assets/green.png" class="logo" />
+
+    
+      <!--<ion-card
+      *ngFor="let field of fields;" 
+    (click)="getParcelById(field.idField)">
+    
+        <ion-card-header >
+          <ion-item lines="none">
+            <p>{{ field.name }}</p>
+            <span>{{ field.idField }}</span>
+          </ion-item>
+        
+        </ion-card-header>
+      
+      </ion-card>-->
+
+      <ion-card *ngFor="let field of fields;" 
+       [routerLink]="tabs/parcel/field.idField">
+        <img alt="Silhouette of mountains" src="https://images.unsplash.com/photo-1558871585-4c3574a1b7cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmllbGRzfGVufDB8fDB8fA%3D%3D&w=1000&q=80" />
+        <ion-card-header>
+          <ion-card-title style="text-align: center;text-transform: uppercase;color: #000;">{{ field.name }}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content style="color: #000;" >
+          Click to see more information about this field <br> <br>
+          <ion-button color="white" class="ion-margin" (click)="getParcelById(field.idField)" >
+            <ion-icon slot="icon-only" name="reader-outline" color="primary" size="large"></ion-icon>
+            View Details
+          </ion-button>
+        </ion-card-content>
+        
+        
+      </ion-card>
+      <ion-button color="white" class="ion-margin" (click)="addField()" style="position: relative;;float: left;left: 30%;">
+        <ion-icon slot="icon-only" name="add-outline" color="primary" size="large"></ion-icon>
+        Add Field
+      </ion-button>
+      
+  </ion-row>
+</ion-grid>
+
+</ion-content>

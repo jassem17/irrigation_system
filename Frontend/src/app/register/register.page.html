@@ -3,6 +3,9 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="title">
     <h4>Signup</h4>
     <p>Register to get started</p>
@@ -10,15 +13,15 @@
   <form [formGroup]="register" (ngSubmit)="signUp()">
   <fieldset  class="input-item">
     <legend>Username</legend> 
-    <ion-input type="" formControlName="username"></ion-input>
+    <ion-input type="" formControlName="username" style="color: beige;"></ion-input>
   </fieldset>
   <fieldset  class="input-item">
     <legend>Email</legend> 
-    <ion-input type="email" placeholder="name@domain.com" formControlName="email"></ion-input>
+    <ion-input type="email" placeholder="name@domain.com" formControlName="email" style="color: beige;"></ion-input>
   </fieldset>
   <fieldset  class="input-item">
     <legend>Password</legend> 
-    <ion-input type="password" placeholder="********" formControlName="password"></ion-input>
+    <ion-input type="password" placeholder="********" formControlName="password" style="color: beige;"></ion-input>
   </fieldset>
   <p>By signing up you're agreed to our Terms & Conditions</p>
 

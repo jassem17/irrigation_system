@@ -1,5 +1,13 @@
 {
-  "name": "login-screen",
-  "integrations": {},
-  "type": "angular"
+  "name": "Smart-Irrigation",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/*",
+      "proxyUrl": "https://smart-irrigation.me:8443/smart_irrigation-1.0-SNAPSHOT/api/"
+    }
+  ]
 }

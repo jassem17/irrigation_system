@@ -29,14 +29,28 @@ private urlRegister= "https://smart-irrigation.me:8443/smart_irrigation-1.0-SNAP
 
   ngOnInit() {
   }
+  handleRefresh(event) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      event.target.complete();
+    }, 2000);
+  };
 
 signUp(){
   let body = this.register.value;
   console.log(body)
   this.http.post(this.urlRegister,body).subscribe(
-    data => {
+    async data => {
       console.log(data)
       this.router.navigate(['login'])
+      const modal = await this.modalCtrl.create({
+        component: LoginPage,
+        animated: true,
+        mode: 'ios',
+        backdropDismiss: false,
+        cssClass: 'admin-modal',
+      })
+      return await modal.present();
     },err=>{
       console.log(err)
       alert('invalid information')

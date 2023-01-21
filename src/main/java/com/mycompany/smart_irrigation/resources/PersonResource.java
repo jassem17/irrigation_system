@@ -34,12 +34,6 @@ public class PersonResource {
     @Inject
     private Pbkdf2PasswordHash passwordHash;
 
-    /*
-    @GET
-    public List<User> findAll() {
-        return repository.findAll()
-                .collect(toList());
-    }*/
 
     @Path("/all")
     @GET
@@ -49,18 +43,11 @@ public class PersonResource {
     }
 
     @GET
-    @RolesAllowed({"ADMIN","USER"})
     @Path("/single/{username}")
+    @RolesAllowed({"ADMIN","USER"})
     public User findById(@PathParam("username") String username) {
         return repository.findByUsername(username).orElseThrow(NOT_FOUND);
     }
-/*
-    @POST
-    public void save(User user) {
-
-        repository.save(user);
-
-    }*/
 
     @Path("/signup")
     @POST
@@ -70,16 +57,9 @@ public class PersonResource {
         service.create(user);
 
     }
-/*
-    @POST
-    @Path("/login/{username}")
-    public User login(@PathParam("username") String username, String password){
-        return service.login(username,password);
-    }
-*/
+
     @PUT
     @Path("/{id}")
-    @RolesAllowed("USER")
     public void update(@PathParam("id") String id, User user) {
         repository.save(user);
     }
@@ -100,7 +80,6 @@ public class PersonResource {
 
     @Path("/{username}")
     @PUT
-    @RolesAllowed("USER")
     public void updatePassword(@PathParam("username") String username,User user){
         service.updatePassword(username,user);
     }

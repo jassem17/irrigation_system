@@ -15,7 +15,6 @@ F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\E
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\Oauth2\UserToken.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\RoleDTO.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\RemoveUser.java
-F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\AuthFilter.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\ErrorMessage.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\Oauth2\GrantType.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\CORSFilter.java
@@ -29,6 +28,7 @@ F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\resources\
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\Oauth2\Oauth2Request.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\Oauth2\Oauth2Observes.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\Parcel.java
+F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\security\AuthorizationFilter.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\resources\PersonResource.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\entities\Field.java
 F:\cot\irrigation_system\src\main\java\com\mycompany\smart_irrigation\repositories\UserRepository.java

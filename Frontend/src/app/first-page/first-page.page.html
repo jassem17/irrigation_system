@@ -1,0 +1,20 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center" >
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+    <img src="../../assets/green.png" class="logo" />
+
+    <div class="title">
+       <h1>Welcome ! </h1>
+       <h4>Continue As ...</h4>
+    </div>
+
+    <div class="ion-margin-top">
+        <ion-button expand="block" class="ion-margin-top" (click)="User()" fill="outline" color="white">User</ion-button>
+        <ion-button expand="block" class="ion-margin-top" (click)="Admin()" color="white">Admin</ion-button>
+    </div>
+</ion-content> 

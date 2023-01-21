@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.example.app',
-  appName: 'smart-irrigation',
+  appId: 'io.ionic.starter',
+  appName: 'Smart-Irrigation',
   webDir: 'www',
   bundledWebRuntime: false
 };

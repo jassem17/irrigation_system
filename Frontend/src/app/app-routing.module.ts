@@ -3,8 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [  
   {
-    path: 'tabs/parcel/:id',
-    loadChildren: () => import('./pages/tabs/parcel/parcel.module').then( m => m.ParcelPageModule)
+    path: 'parcel/:id',
+    loadChildren: () => import('./parcel/parcel.module').then( m => m.ParcelPageModule)
   },
   {
     path: 'tabs',
@@ -12,8 +12,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'welcome',
+    redirectTo: 'first-page',
     pathMatch: 'full'
+  },
+  {
+    path: 'first-page',
+    loadChildren: () => import('./first-page/first-page.module').then( m => m.FirstPagePageModule)
   },
   {
     path: 'welcome',
@@ -37,7 +41,11 @@ const routes: Routes = [
   },
   {
     path: 'fields',
-    loadChildren: () => import('./pages/tabs/fields/fields.module').then( m => m.FieldsPageModule)
+    loadChildren: () => import('./fields/fields.module').then( m => m.FieldsPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
 
 
